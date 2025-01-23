@@ -1,0 +1,31 @@
+The solution involves carefully managing CSS specificity:
+
+```css
+/* Improved Specificity and Order */
+div {
+  color: blue; /* Default style */
+}
+
+#my-id div {
+  color: green; /* Higher specificity */
+}
+
+.my-class div {
+  color: red; /* Higher specificity than the default */
+}
+
+#my-id .my-class div {
+  color: purple; /* Highest specificity */
+}
+
+.my-class #my-id div {
+  color: orange; /* Highest specificity */
+}
+
+/* OR - using !important  (Generally to be avoided for maintainability):*/
+#my-id .my-class div {
+  color: purple !important; 
+}
+```
+
+The solution demonstrates two approaches: 1) Prioritizing selectors by their specificity to get the intended outcome and 2) Using `!important` (though generally discouraged for large CSS projects due to maintainability concerns).  The best solution usually involves carefully adjusting the CSS selectors so that `!important` isn't required.
