@@ -1,0 +1,27 @@
+The following CSS code snippet demonstrates an uncommon error related to the specificity of CSS selectors:
+
+```css
+div {
+  color: blue;
+}
+
+.my-class div {
+  color: red; 
+}
+
+#my-id div {
+  color: green;
+}
+
+#my-id .my-class div {
+  color: purple;
+}
+
+.my-class #my-id div {
+  color: orange;
+} 
+```
+
+The unexpected behavior arises from the order in which these rules are applied. Even though `#my-id .my-class div` comes before `.my-class #my-id div`, the element will be styled with `color: orange` because the selector `.my-class #my-id div` has higher specificity. This is because it combines class and id selectors, which have higher precedence than other selectors.
+
+This error can be particularly tricky to identify because it goes against the intuitive reading order of the CSS rules.  A developer might expect `#my-id .my-class div` (which is listed before) to be applied, but CSS specificity rules override the order of declaration.
